@@ -54,8 +54,8 @@ body:
       label: The signed message
       description: >
         Exactly as signed, including blank lines and any Resources section. This is what the
-        parser sees, so a reformatted copy is useless. The message is not a secret — it contains
-        only a domain, a public address, a nonce and timestamps.
+        parser sees, so a reformatted copy is useless. Post a message from a test deployment, or
+        wait until its nonce has expired.
       render: text
     validations:
       required: true
@@ -64,7 +64,10 @@ body:
     id: signature
     attributes:
       label: The signature
-      description: A signature is only usable together with its nonce, which is single use
+      description: >
+        Optional. A message and its signature log the signer in until the nonce expires, and a
+        failed check does not consume it. Share one only from a throwaway wallet or a test
+        deployment, or after the nonce has expired.
     validations:
       required: false
 
