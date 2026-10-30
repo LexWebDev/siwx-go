@@ -6,6 +6,8 @@ All notable changes to this module are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-30
+
 ### Changed
 
 - **Breaking:** `SignatureVerifier.Verify` returns a `SignerKind` instead of a `bool`.
@@ -38,5 +40,6 @@ First release, the Go counterpart of `lexwebdev/laravel-siwx` 0.4.0.
   covered yet.
 - The same test vectors as the PHP package, and a comparison of both parsers on 117 messages.
 
-[Unreleased]: https://github.com/LexWebDev/siwx-go/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/LexWebDev/siwx-go/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/LexWebDev/siwx-go/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/LexWebDev/siwx-go/releases/tag/v0.1.0
