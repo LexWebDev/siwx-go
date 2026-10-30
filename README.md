@@ -79,6 +79,9 @@ http.HandleFunc("POST /api/auth", func(writer http.ResponseWriter, request *http
 `siwx_invalid_domain`. List each domain **once**, exactly as the wallet sends it in the `domain`
 line, including a port such as `localhost:3000`. The authority of `URI` must equal that line.
 
+`ClockSkew` tolerates wallet clocks running ahead and defaults to five minutes. Set
+`siwx.NoClockSkew` to turn it off.
+
 `NonceHandler` has no rate limit, and every request stores a nonce. **Put a limiter in front of it.**
 
 `Session` carries `Address`, `Namespace`, `ChainID`, `Domain`, `IssuedAt` and the parsed `Message`.
@@ -100,8 +103,10 @@ requests with the same signed message both pass.
 
 ## Error codes
 
-Every rejection is a `*siwx.Error` you can match with `errors.Is`. Anything else, such as a Redis
-outage, is an infrastructure failure and comes through unchanged.
+Every rejection wraps a `*siwx.Error` you can match with `errors.Is`. Send `failure.Code` to the
+client, never `err.Error()`. When the EIP-1271 call fails, the error wraps both
+`ErrInvalidSignature` and the cause, so the login is refused and you can still log the outage. Any
+other error, such as a Redis outage, is an infrastructure failure and comes through unchanged.
 
 | Code | Sentinel | Meaning |
 |---|---|---|
@@ -147,8 +152,8 @@ serves every chain instead, so the signature is checked on that endpoint's netwo
 contract-wallet accounts by `(ChainID, Address)`, or map only the chain you trust.
 
 EOA logins never pay for this: the call happens only after recovery fails, and only for a live
-nonce. An RPC error counts as an invalid signature. This is the only place the package touches the
-network.
+nonce. This is the only place the package touches the network, and its errors never contain the
+endpoint, because RPC URLs often carry an API key.
 
 ## Trying it with real wallets
 

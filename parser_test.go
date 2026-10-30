@@ -1,4 +1,4 @@
-package tests
+package siwx_test
 
 import (
 	"errors"

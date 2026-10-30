@@ -1,4 +1,4 @@
-package tests
+package siwx_test
 
 import (
 	"context"
@@ -20,6 +20,12 @@ type rpcRequest struct {
 	Params  []any  `json:"params"`
 }
 
+func accepted(checker *siwx.RPCContractChecker, address, hash, signature, chainID string) bool {
+	valid, _ := checker.IsValid(context.Background(), address, hash, signature, chainID)
+
+	return valid
+}
+
 func rpcServer(t *testing.T, result string) (*httptest.Server, *atomic.Int32, *rpcRequest) {
 	t.Helper()
 
@@ -39,7 +45,7 @@ func TestReadsTheMagicValueFromAnEthCallResponse(t *testing.T) {
 	server, _, _ := rpcServer(t, magicResult)
 	checker := siwx.NewRPCContractChecker(server.URL, nil)
 
-	if !checker.IsValid(context.Background(), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1") {
+	if !accepted(checker, vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1") {
 		t.Fatal("rejected")
 	}
 }
@@ -48,7 +54,7 @@ func TestBuildsTheIsValidSignatureCall(t *testing.T) {
 	server, _, received := rpcServer(t, magicResult)
 	checker := siwx.NewRPCContractChecker(server.URL, nil)
 
-	checker.IsValid(context.Background(), "0xabc", "0x"+strings.Repeat("a", 64), "0x"+strings.Repeat("b", 66), "eip155:1")
+	accepted(checker, "0xabc", "0x"+strings.Repeat("a", 64), "0x"+strings.Repeat("b", 66), "eip155:1")
 
 	want := "0x1626ba7e" +
 		strings.Repeat("a", 64) +
@@ -73,7 +79,7 @@ func TestTreatsAnyOtherMagicValueAsInvalid(t *testing.T) {
 	server, _, _ := rpcServer(t, "0x"+strings.Repeat("0", 64))
 	checker := siwx.NewRPCContractChecker(server.URL, nil)
 
-	if checker.IsValid(context.Background(), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1") {
+	if accepted(checker, vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1") {
 		t.Fatal("accepted")
 	}
 }
@@ -87,7 +93,7 @@ func TestTreatsAnRpcFailureAsInvalidRatherThanFailing(t *testing.T) {
 
 	checker := siwx.NewRPCContractChecker(server.URL, nil)
 
-	if checker.IsValid(context.Background(), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1") {
+	if accepted(checker, vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1") {
 		t.Fatal("accepted")
 	}
 }
@@ -96,7 +102,7 @@ func TestSendsNoCallForASignatureThatIsNotHex(t *testing.T) {
 	server, calls, _ := rpcServer(t, magicResult)
 	checker := siwx.NewRPCContractChecker(server.URL, nil)
 
-	if checker.IsValid(context.Background(), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), "0xnothex", "eip155:1") {
+	if accepted(checker, vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), "0xnothex", "eip155:1") {
 		t.Fatal("accepted")
 	}
 
@@ -110,10 +116,10 @@ func TestCallsTheRpcOfTheChainTheMessageNames(t *testing.T) {
 	base, _, _ := rpcServer(t, magicResult)
 	checker := siwx.NewRPCContractChecker("", map[string]string{"eip155:1": mainnet.URL, "eip155:8453": base.URL})
 
-	if !checker.IsValid(context.Background(), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:8453") {
+	if !accepted(checker, vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:8453") {
 		t.Fatal("base rejected")
 	}
-	if checker.IsValid(context.Background(), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1") {
+	if accepted(checker, vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1") {
 		t.Fatal("mainnet accepted")
 	}
 }
@@ -122,7 +128,7 @@ func TestRefusesAChainOutsideTheMapInsteadOfFallingBack(t *testing.T) {
 	legacy, calls, _ := rpcServer(t, magicResult)
 	checker := siwx.NewRPCContractChecker(legacy.URL, map[string]string{"eip155:1": legacy.URL})
 
-	if checker.IsValid(context.Background(), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:137") {
+	if accepted(checker, vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:137") {
 		t.Fatal("accepted")
 	}
 
@@ -135,13 +141,63 @@ func TestSendsEveryChainToTheSingleRpcWhenNoMapIsConfigured(t *testing.T) {
 	server, _, _ := rpcServer(t, magicResult)
 	checker := siwx.NewRPCContractChecker(server.URL, nil)
 
-	if !checker.IsValid(context.Background(), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:137") {
+	if !accepted(checker, vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:137") {
 		t.Fatal("rejected")
 	}
 }
 
 func TestRefusesEverythingWithoutAnRpc(t *testing.T) {
-	if siwx.NewRPCContractChecker("", nil).IsValid(context.Background(), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1") {
+	if accepted(siwx.NewRPCContractChecker("", nil), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1") {
 		t.Fatal("accepted")
+	}
+}
+
+func TestReportsAnRpcFailureWithoutRevealingTheEndpoint(t *testing.T) {
+	server := httptest.NewServer(http.NotFoundHandler())
+	endpoint := server.URL + "/v1/secret-project-key"
+	checker := siwx.NewRPCContractChecker(endpoint, nil)
+	server.Close()
+
+	valid, err := checker.IsValid(context.Background(), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1")
+
+	if valid || err == nil {
+		t.Fatalf("valid %v, err %v", valid, err)
+	}
+	if strings.Contains(err.Error(), "secret-project-key") {
+		t.Fatalf("leaked: %v", err)
+	}
+}
+
+func TestReportsAnErrorStatus(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(writer http.ResponseWriter, _ *http.Request) {
+		writer.WriteHeader(http.StatusBadGateway)
+	}))
+	t.Cleanup(server.Close)
+
+	valid, err := siwx.NewRPCContractChecker(server.URL, nil).IsValid(context.Background(), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1")
+
+	if valid || err == nil {
+		t.Fatalf("valid %v, err %v", valid, err)
+	}
+}
+
+func TestIsNotAnErrorWhenAChainIsSimplyNotConfigured(t *testing.T) {
+	valid, err := siwx.NewRPCContractChecker("", nil).IsValid(context.Background(), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1")
+
+	if valid || err != nil {
+		t.Fatalf("valid %v, err %v", valid, err)
+	}
+}
+
+func TestReportsAJsonRpcError(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(writer http.ResponseWriter, _ *http.Request) {
+		_, _ = writer.Write([]byte(`{"jsonrpc":"2.0","id":1,"error":{"code":-32000,"message":"rate limited"}}`))
+	}))
+	t.Cleanup(server.Close)
+
+	valid, err := siwx.NewRPCContractChecker(server.URL, nil).IsValid(context.Background(), vector(t, "EVM_SIGNER"), strings.Repeat("a", 64), vector(t, "EVM_SIG"), "eip155:1")
+
+	if valid || err == nil {
+		t.Fatalf("valid %v, err %v", valid, err)
 	}
 }

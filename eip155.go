@@ -19,44 +19,51 @@ const (
 
 var evmAddressPattern = regexp.MustCompile(`^0x[a-fA-F0-9]{40}$`)
 
-type Eip155Verifier struct {
+// EIP155Verifier verifies EVM signatures through EIP-191 recovery and, optionally, EIP-1271.
+type EIP155Verifier struct {
 	contracts ContractSignatureChecker
 }
 
-func NewEip155Verifier(contracts ContractSignatureChecker) *Eip155Verifier {
-	return &Eip155Verifier{contracts: contracts}
+// NewEIP155Verifier returns a verifier. A nil contracts disables EIP-1271.
+func NewEIP155Verifier(contracts ContractSignatureChecker) *EIP155Verifier {
+	return &EIP155Verifier{contracts: contracts}
 }
 
-func (verifier *Eip155Verifier) Namespace() string {
+// Namespace returns eip155.
+func (verifier *EIP155Verifier) Namespace() string {
 	return "eip155"
 }
 
-func (verifier *Eip155Verifier) Verify(ctx context.Context, message *Message, signature string) bool {
+// Verify reports whether signature belongs to the message address.
+func (verifier *EIP155Verifier) Verify(ctx context.Context, message *Message, signature string) (bool, error) {
 	if !evmAddressPattern.MatchString(message.Address) {
-		return false
+		return false, nil
 	}
 
-	recovered, found := verifier.Recover(message.Raw, signature)
+	recovered, found := recoverAddress(message.Raw, signature)
 	if found && recovered == verifier.NormaliseAddress(message.Address) {
-		return true
+		return true, nil
 	}
 
 	if verifier.contracts == nil {
-		return false
+		return false, nil
 	}
 
-	return verifier.contracts.IsValid(ctx, message.Address, "0x"+verifier.Hash(message.Raw), signature, message.ChainID)
+	hash := "0x" + hex.EncodeToString(personalMessageHash(message.Raw))
+
+	return verifier.contracts.IsValid(ctx, message.Address, hash, signature, message.ChainID)
 }
 
-func (verifier *Eip155Verifier) NormaliseAddress(address string) string {
+// NormaliseAddress lowercases the address.
+func (verifier *EIP155Verifier) NormaliseAddress(address string) string {
 	return strings.ToLower(address)
 }
 
-func (verifier *Eip155Verifier) Hash(message string) string {
-	return hex.EncodeToString(keccak256([]byte(personalSignPrefix + strconv.Itoa(len(message)) + message)))
+func personalMessageHash(message string) []byte {
+	return keccak256([]byte(personalSignPrefix + strconv.Itoa(len(message)) + message))
 }
 
-func (verifier *Eip155Verifier) Recover(message, signature string) (string, bool) {
+func recoverAddress(message, signature string) (string, bool) {
 	decoded, err := hex.DecodeString(strings.TrimPrefix(signature, "0x"))
 	if err != nil || len(decoded) != signatureBytes {
 		return "", false
@@ -74,12 +81,7 @@ func (verifier *Eip155Verifier) Recover(message, signature string) (string, bool
 	compact = append(compact, recoveryOffset+recoveryID)
 	compact = append(compact, decoded[:signatureBytes-1]...)
 
-	hash, err := hex.DecodeString(verifier.Hash(message))
-	if err != nil {
-		return "", false
-	}
-
-	publicKey, _, err := ecdsa.RecoverCompact(compact, hash)
+	publicKey, _, err := ecdsa.RecoverCompact(compact, personalMessageHash(message))
 	if err != nil {
 		return "", false
 	}

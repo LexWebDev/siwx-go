@@ -1,4 +1,4 @@
-package tests
+package siwx_test
 
 import (
 	"context"
@@ -287,10 +287,10 @@ type recordingVerifier struct{ seen string }
 
 func (verifier *recordingVerifier) Namespace() string { return "bip122" }
 
-func (verifier *recordingVerifier) Verify(_ context.Context, message *siwx.Message, _ string) bool {
+func (verifier *recordingVerifier) Verify(_ context.Context, message *siwx.Message, _ string) (bool, error) {
 	verifier.seen = message.Address
 
-	return true
+	return true, nil
 }
 
 func (verifier *recordingVerifier) NormaliseAddress(address string) string {
@@ -312,5 +312,68 @@ func TestAcceptsACustomVerifierWithoutTouchingTheCore(t *testing.T) {
 
 	if session.Address != "normalised:"+vector(t, "EVM_SIGNER") || custom.seen != vector(t, "EVM_SIGNER") {
 		t.Fatalf("session: %+v", session)
+	}
+}
+
+func TestReportsAnRpcOutageAlongsideTheInvalidSignature(t *testing.T) {
+	outage := errors.New("rpc unavailable")
+	verifier := newVerifier(t, siwx.Config{Contracts: &countingChecker{failure: outage}})
+
+	_, err := verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_FOREIGN_SIG"))
+
+	if !errors.Is(err, siwx.ErrInvalidSignature) || !errors.Is(err, outage) {
+		t.Fatalf("got %v", err)
+	}
+
+	var failure *siwx.Error
+	if !errors.As(err, &failure) || failure.Code != "siwx_invalid_signature" {
+		t.Fatalf("got %v", err)
+	}
+}
+
+func TestKeepsTheNonceWhenTheRpcIsDown(t *testing.T) {
+	store := newSeededStore(signedNonce)
+	verifier := newVerifier(t, siwx.Config{Nonces: store, Contracts: &countingChecker{failure: errors.New("down")}})
+
+	_, _ = verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_FOREIGN_SIG"))
+
+	if live, _ := store.Exists(context.Background(), signedNonce); !live {
+		t.Fatal("the nonce was burned")
+	}
+}
+
+func TestSurvivesATypedNilContractChecker(t *testing.T) {
+	var checker *siwx.RPCContractChecker
+
+	verifier := newVerifier(t, siwx.Config{Contracts: checker})
+
+	_, err := verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_FOREIGN_SIG"))
+	if !errors.Is(err, siwx.ErrInvalidSignature) {
+		t.Fatalf("got %v", err)
+	}
+}
+
+func TestAppliesTheDefaultSkewWhenNoneIsConfigured(t *testing.T) {
+	verifier := newVerifier(t, siwx.Config{Now: fixedClock("2026-07-30T12:30:00Z")})
+
+	if _, err := verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_SIG")); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestDisablesTheSkewOnRequest(t *testing.T) {
+	verifier := newVerifier(t, siwx.Config{ClockSkew: siwx.NoClockSkew, Now: fixedClock("2026-07-30T12:34:55Z")})
+
+	_, err := verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_SIG"))
+	if !errors.Is(err, siwx.ErrInvalidMessage) {
+		t.Fatalf("got %v", err)
+	}
+}
+
+func TestAcceptsAMessageIssuedExactlyNowWithoutSkew(t *testing.T) {
+	verifier := newVerifier(t, siwx.Config{ClockSkew: siwx.NoClockSkew, Now: fixedClock("2026-07-30T12:34:56Z")})
+
+	if _, err := verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_SIG")); err != nil {
+		t.Fatal(err)
 	}
 }

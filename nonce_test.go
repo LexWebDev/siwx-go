@@ -1,4 +1,4 @@
-package tests
+package siwx_test
 
 import (
 	"context"
@@ -252,5 +252,59 @@ func TestNonceHandlerAnswers500WhenTheStoreFails(t *testing.T) {
 
 	if recorder.Code != http.StatusInternalServerError {
 		t.Fatalf("status: %d", recorder.Code)
+	}
+}
+
+func TestMemoryStoreKeepsLiveNoncesWhileForgettingExpiredOnes(t *testing.T) {
+	moment := time.Date(2026, 7, 30, 12, 0, 0, 0, time.UTC)
+	store := siwx.NewMemoryNonceStore(time.Minute, func() time.Time { return moment })
+	early, _ := store.Issue(context.Background())
+
+	moment = moment.Add(40 * time.Second)
+	late, _ := store.Issue(context.Background())
+
+	moment = moment.Add(30 * time.Second)
+	_, _ = store.Issue(context.Background())
+
+	if live, _ := store.Exists(context.Background(), early); live {
+		t.Fatal("expired nonce still live")
+	}
+	if live, _ := store.Exists(context.Background(), late); !live {
+		t.Fatal("live nonce forgotten")
+	}
+	if size := store.Len(); size != 2 {
+		t.Fatalf("size: %d", size)
+	}
+}
+
+func TestMemoryStoreForgetsAConsumedNonceWithoutDisturbingExpiry(t *testing.T) {
+	moment := time.Date(2026, 7, 30, 12, 0, 0, 0, time.UTC)
+	store := siwx.NewMemoryNonceStore(time.Minute, func() time.Time { return moment })
+	consumed, _ := store.Issue(context.Background())
+	kept, _ := store.Issue(context.Background())
+
+	_ = store.Consume(context.Background(), consumed)
+	moment = moment.Add(61 * time.Second)
+	_, _ = store.Issue(context.Background())
+
+	if live, _ := store.Exists(context.Background(), kept); live {
+		t.Fatal("expired nonce still live")
+	}
+	if size := store.Len(); size != 1 {
+		t.Fatalf("size: %d", size)
+	}
+}
+
+func BenchmarkMemoryStoreIssueWithManyLiveNonces(b *testing.B) {
+	store := siwx.NewMemoryNonceStore(time.Hour, nil)
+
+	for issued := 0; issued < 200000; issued++ {
+		_, _ = store.Issue(context.Background())
+	}
+
+	b.ResetTimer()
+
+	for b.Loop() {
+		_, _ = store.Issue(context.Background())
 	}
 }

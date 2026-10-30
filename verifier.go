@@ -3,6 +3,7 @@ package siwx
 import (
 	"context"
 	"errors"
+	"fmt"
 	"net/url"
 	"slices"
 	"strings"
@@ -11,32 +12,50 @@ import (
 
 const defaultClockSkew = 5 * time.Minute
 
+// NoClockSkew as Config.ClockSkew disables the tolerance for wallet clocks.
+const NoClockSkew time.Duration = -1
+
+// SignatureVerifier verifies signatures of one CAIP-2 namespace. A returned error means
+// the check could not be completed.
 type SignatureVerifier interface {
 	Namespace() string
-	Verify(ctx context.Context, message *Message, signature string) bool
+	Verify(ctx context.Context, message *Message, signature string) (bool, error)
 	NormaliseAddress(address string) string
 }
 
+// ContractSignatureChecker verifies a smart contract wallet signature on the given chain.
+// Returned errors can reach logs, so they must not carry secrets.
 type ContractSignatureChecker interface {
-	IsValid(ctx context.Context, address, hash, signature, chainID string) bool
+	IsValid(ctx context.Context, address, hash, signature, chainID string) (bool, error)
 }
 
+// NonceStore issues single-use nonces. Consume must be atomic: of two parallel calls
+// with one nonce, exactly one succeeds, and the other returns ErrInvalidNonce.
 type NonceStore interface {
 	Issue(ctx context.Context) (string, error)
 	Exists(ctx context.Context, nonce string) (bool, error)
 	Consume(ctx context.Context, nonce string) error
 }
 
+// Config configures a Verifier. Only Nonces is required, but an empty Domains rejects
+// every message.
 type Config struct {
-	Domains    []string
+	// Domains lists allowed domains exactly as wallets send them, with a port if any.
+	Domains []string
+	// Namespaces lists enabled namespaces. Nil means eip155 and solana.
 	Namespaces []string
-	ClockSkew  time.Duration
-	Nonces     NonceStore
-	Contracts  ContractSignatureChecker
-	Verifiers  []SignatureVerifier
-	Now        func() time.Time
+	// ClockSkew tolerates wallet clocks running ahead. Zero means five minutes.
+	ClockSkew time.Duration
+	Nonces    NonceStore
+	// Contracts enables EIP-1271 for EVM signatures.
+	Contracts ContractSignatureChecker
+	// Verifiers adds or replaces namespace verifiers.
+	Verifiers []SignatureVerifier
+	// Now replaces time.Now.
+	Now func() time.Time
 }
 
+// Session is the result of a successful verification.
 type Session struct {
 	Address   string
 	Namespace string
@@ -46,6 +65,7 @@ type Session struct {
 	Message   *Message
 }
 
+// Verifier checks signed messages. It is safe for concurrent use.
 type Verifier struct {
 	domains   []string
 	enabled   []string
@@ -55,6 +75,7 @@ type Verifier struct {
 	now       func() time.Time
 }
 
+// New returns a Verifier for the given configuration.
 func New(config Config) (*Verifier, error) {
 	if config.Nonces == nil {
 		return nil, errors.New("siwx: a nonce store is required")
@@ -65,21 +86,18 @@ func New(config Config) (*Verifier, error) {
 		enabled:   config.Namespaces,
 		verifiers: map[string]SignatureVerifier{},
 		nonces:    config.Nonces,
-		clockSkew: config.ClockSkew,
+		clockSkew: resolveClockSkew(config.ClockSkew),
 		now:       config.Now,
 	}
 
 	if verifier.enabled == nil {
 		verifier.enabled = []string{"eip155", "solana"}
 	}
-	if verifier.clockSkew == 0 {
-		verifier.clockSkew = defaultClockSkew
-	}
 	if verifier.now == nil {
 		verifier.now = time.Now
 	}
 
-	builtIn := []SignatureVerifier{NewEip155Verifier(config.Contracts), NewSolanaVerifier()}
+	builtIn := []SignatureVerifier{NewEIP155Verifier(config.Contracts), NewSolanaVerifier()}
 
 	for _, registered := range append(builtIn, config.Verifiers...) {
 		verifier.verifiers[registered.Namespace()] = registered
@@ -88,6 +106,8 @@ func New(config Config) (*Verifier, error) {
 	return verifier, nil
 }
 
+// Verify checks a signed message and consumes its nonce. Rejections wrap a *Error; an
+// outage of the contract check also wraps its cause, and a store failure comes through as is.
 func (verifier *Verifier) Verify(ctx context.Context, raw, signature string) (*Session, error) {
 	message, err := Parse(raw)
 	if err != nil {
@@ -119,7 +139,11 @@ func (verifier *Verifier) Verify(ctx context.Context, raw, signature string) (*S
 		return nil, ErrInvalidNonce
 	}
 
-	if !chainVerifier.Verify(ctx, message, signature) {
+	valid, err := chainVerifier.Verify(ctx, message, signature)
+	if err != nil {
+		return nil, fmt.Errorf("%w: %w", ErrInvalidSignature, err)
+	}
+	if !valid {
 		return nil, ErrInvalidSignature
 	}
 
@@ -179,6 +203,14 @@ func (verifier *Verifier) assertTimestamps(message *Message) error {
 	}
 
 	return nil
+}
+
+func resolveClockSkew(configured time.Duration) time.Duration {
+	if configured == 0 {
+		return defaultClockSkew
+	}
+
+	return max(configured, 0)
 }
 
 func normaliseDomains(domains []string) []string {

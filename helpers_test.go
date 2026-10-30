@@ -1,4 +1,4 @@
-package tests
+package siwx_test
 
 import (
 	"context"
@@ -89,13 +89,14 @@ func fixedClock(moment string) func() time.Time {
 
 type countingChecker struct {
 	verdict bool
+	failure error
 	calls   int
 	chainID string
 }
 
-func (checker *countingChecker) IsValid(_ context.Context, _, _, _, chainID string) bool {
+func (checker *countingChecker) IsValid(_ context.Context, _, _, _, chainID string) (bool, error) {
 	checker.calls++
 	checker.chainID = chainID
 
-	return checker.verdict
+	return checker.verdict, checker.failure
 }

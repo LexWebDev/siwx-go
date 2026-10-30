@@ -5,8 +5,11 @@ import (
 	"context"
 	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"fmt"
+	"io"
 	"net/http"
+	"net/url"
 	"strings"
 	"time"
 )
@@ -14,16 +17,20 @@ import (
 const (
 	eip1271MagicValue = "0x1626ba7e"
 	rpcTimeout        = 5 * time.Second
+	maxRPCBodyBytes   = 1 << 20
 	wordHexLength     = 64
 	signatureOffset   = 64
 )
 
+// RPCContractChecker verifies EIP-1271 signatures through eth_call.
 type RPCContractChecker struct {
 	url    string
 	urls   map[string]string
 	client *http.Client
 }
 
+// NewRPCContractChecker returns a checker. With urls set, only those CAIP-2 chains are
+// served and url is ignored; otherwise url serves every chain.
 func NewRPCContractChecker(url string, urls map[string]string) *RPCContractChecker {
 	return &RPCContractChecker{
 		url:    url,
@@ -32,23 +39,29 @@ func NewRPCContractChecker(url string, urls map[string]string) *RPCContractCheck
 	}
 }
 
-func (checker *RPCContractChecker) IsValid(ctx context.Context, address, hash, signature, chainID string) bool {
+// IsValid reports whether the contract at address accepts signature. Its errors never
+// contain the endpoint, which often carries an API key.
+func (checker *RPCContractChecker) IsValid(ctx context.Context, address, hash, signature, chainID string) (bool, error) {
+	if checker == nil {
+		return false, nil
+	}
+
 	endpoint := checker.endpointFor(chainID)
 	if endpoint == "" {
-		return false
+		return false, nil
 	}
 
 	calldata, valid := eip1271Calldata(hash, signature)
 	if !valid {
-		return false
+		return false, nil
 	}
 
 	result, err := checker.ethCall(ctx, endpoint, address, calldata)
 	if err != nil {
-		return false
+		return false, err
 	}
 
-	return strings.HasPrefix(result, eip1271MagicValue)
+	return strings.HasPrefix(result, eip1271MagicValue), nil
 }
 
 func (checker *RPCContractChecker) endpointFor(chainID string) string {
@@ -72,13 +85,13 @@ func (checker *RPCContractChecker) ethCall(ctx context.Context, endpoint, addres
 
 	request, err := http.NewRequestWithContext(ctx, http.MethodPost, endpoint, bytes.NewReader(payload))
 	if err != nil {
-		return "", err
+		return "", errors.New("siwx: invalid rpc endpoint")
 	}
 	request.Header.Set("Content-Type", "application/json")
 
 	response, err := checker.client.Do(request)
 	if err != nil {
-		return "", err
+		return "", withoutEndpoint(err)
 	}
 	defer func() { _ = response.Body.Close() }()
 
@@ -86,14 +99,35 @@ func (checker *RPCContractChecker) ethCall(ctx context.Context, endpoint, addres
 		return "", fmt.Errorf("siwx: rpc answered %d", response.StatusCode)
 	}
 
-	var body struct {
+	return decodeRPCResult(response.Body)
+}
+
+func decodeRPCResult(body io.Reader) (string, error) {
+	var decoded struct {
 		Result string `json:"result"`
+		Error  *struct {
+			Message string `json:"message"`
+		} `json:"error"`
 	}
-	if err := json.NewDecoder(response.Body).Decode(&body); err != nil {
+
+	if err := json.NewDecoder(io.LimitReader(body, maxRPCBodyBytes)).Decode(&decoded); err != nil {
 		return "", err
 	}
 
-	return body.Result, nil
+	if decoded.Error != nil {
+		return "", fmt.Errorf("siwx: rpc error: %s", decoded.Error.Message)
+	}
+
+	return decoded.Result, nil
+}
+
+func withoutEndpoint(err error) error {
+	var requestError *url.Error
+	if errors.As(err, &requestError) {
+		return requestError.Err
+	}
+
+	return err
 }
 
 func eip1271Calldata(hash, signature string) (string, bool) {

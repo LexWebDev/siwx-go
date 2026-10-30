@@ -28,6 +28,8 @@ var (
 	}
 )
 
+// Parse reads an EIP-4361 message for any network. It rejects what the grammar forbids
+// but leaves the address format to the namespace verifier.
 func Parse(raw string) (*Message, error) {
 	normalised := strings.Trim(strings.ReplaceAll(raw, "\r\n", "\n"), trimmedRunes)
 	lines := strings.Split(normalised, "\n")
