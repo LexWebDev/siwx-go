@@ -1,0 +1,15 @@
+{
+    "EVM_SIGNER": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+    "EVM_MESSAGE": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+    "EVM_RESOURCES_MESSAGE": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+    "EVM_SIG": "0xdad8168bf0902fc1607c9f9620a31e7bbbc7fdc84b94a084a014707309b91e803db81f9b3e0eeb2b88ffbe72f918a3e24b5e4a26b29f2a7035a0b29f71d6e3231c",
+    "EVM_RESOURCES_SIG": "0xb16f1105ae8627b362abe63be8a7258b967f63e88bc23b2b94bc8d57fb78c7f83db16ab67dd45067d99952394f1b797a4b03679c56eadb6dc32c809f5cf3e5a31c",
+    "EVM_FOREIGN_SIG": "0x209e5cf3d926998a69b3385d9702ead952b77a091993b46f8cd3a7e9b3c3cf1c14d77184ae800e0f3de1c1d043575d5ad352933e763ebaf5f089161ac58e72091c",
+    "SOLANA_SIGNER": "8D3G5mxsEXV1n92Lbq85BQSQGaVHBsWNxfYrd6ocYEEW",
+    "SOLANA_MESSAGE": "dapp.expert wants you to sign in with your Solana account:\n8D3G5mxsEXV1n92Lbq85BQSQGaVHBsWNxfYrd6ocYEEW\n\nSign in with Solana to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+    "SOLANA_SIG_BASE64": "VrRdlwp460QwmLKhVWhAo/cjQ6I09fxqQ/pVLrGjchLRKicNJFn7XORx9ZEa6VepB7njRny/9iV54sMLIWvdBA==",
+    "SOLANA_SIG_BASE58": "2jYVzMm44yEUrSpcNSug2SAjCLZyry8PyGaRe55LV4topJ5B4paNNt7fyxbfu3ZiXc1aosjLTKpjKRyhsLnhBzYB",
+    "PHANTOM_SIGNER": "3mLXhf4i5d5U46kPkwY45Ec3bBxbYvgKa8cwgoxGLMPG",
+    "PHANTOM_MESSAGE": "localhost:3000 wants you to sign in with your Solana account:\n3mLXhf4i5d5U46kPkwY45Ec3bBxbYvgKa8cwgoxGLMPG\n\nSign in to the SIWX stand.\n\nURI: http://localhost:3000\nVersion: 1\nChain ID: solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp\nNonce: LZAsP6lEAHmRQuQ4\nIssued At: 2026-07-30T14:17:00.843Z",
+    "PHANTOM_SIG": "4NUDMbCjNGSJGzow8YEnoiQqvYWJUR8kE21hVs1DNXZsLWrnxvENjwSQQSb7QCNG3C8ziybL3FDfGNbuBYESxfRu"
+}
