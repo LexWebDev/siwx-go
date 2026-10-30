@@ -1,0 +1,90 @@
+name: Bug report
+description: A signature that should verify and does not, or the other way round
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not use this form for vulnerabilities — see SECURITY.md for the private channel.
+
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Module and Go versions
+      placeholder: siwx-go 0.1.0, Go 1.27.3
+    validations:
+      required: true
+
+  - type: dropdown
+    id: namespace
+    attributes:
+      label: Chain namespace
+      options:
+        - eip155
+        - solana
+        - a custom verifier of my own
+    validations:
+      required: true
+
+  - type: input
+    id: wallet
+    attributes:
+      label: Wallet
+      description: Which wallet produced the signature, and on desktop or mobile
+      placeholder: MetaMask mobile via WalletConnect
+    validations:
+      required: true
+
+  - type: dropdown
+    id: path
+    attributes:
+      label: How was the message built
+      options:
+        - AppKit in the browser (personal_sign / signMessage)
+        - One-Click Auth through WalletConnect
+        - my own code
+        - not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: message
+    attributes:
+      label: The signed message
+      description: >
+        Exactly as signed, including blank lines and any Resources section. This is what the
+        parser sees, so a reformatted copy is useless. The message is not a secret — it contains
+        only a domain, a public address, a nonce and timestamps.
+      render: text
+    validations:
+      required: true
+
+  - type: input
+    id: signature
+    attributes:
+      label: The signature
+      description: A signature is only usable together with its nonce, which is single use
+    validations:
+      required: false
+
+  - type: dropdown
+    id: code
+    attributes:
+      label: Error code you got
+      options:
+        - siwx_invalid_message
+        - siwx_invalid_domain
+        - siwx_invalid_nonce
+        - siwx_invalid_signature
+        - siwx_unsupported_namespace
+        - no error, but the result was wrong
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true

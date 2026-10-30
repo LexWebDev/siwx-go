@@ -1,0 +1,43 @@
+name: Chain support or feature
+description: A chain the module should verify, or something it should be able to do
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ready-made auth routes, framework adapters and session storage are deliberately out of scope —
+        CONTRIBUTING.md explains why. Everything else is open.
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What should it do
+    validations:
+      required: true
+
+  - type: input
+    id: namespace
+    attributes:
+      label: CAIP-2 namespace
+      description: If this is about a chain. Leave empty otherwise
+      placeholder: bip122
+    validations:
+      required: false
+
+  - type: textarea
+    id: wallets
+    attributes:
+      label: Wallets you can test against
+      description: >
+        For a new chain this decides whether it can be done at all. Wallets disagree about what
+        they sign, so support without real wallets to verify against is guesswork.
+    validations:
+      required: false
+
+  - type: textarea
+    id: why
+    attributes:
+      label: What you are building
+      description: The concrete case beats a general argument
+    validations:
+      required: true
