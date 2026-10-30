@@ -2,40 +2,25 @@ package siwx_test
 
 import (
 	"context"
-	"encoding/json"
 	"errors"
-	"os"
 	"sync"
 	"testing"
 	"time"
 
 	siwx "github.com/LexWebDev/siwx-go"
-)
-
-var (
-	vectorsOnce sync.Once
-	vectors     map[string]string
+	"github.com/LexWebDev/siwx-go/evm"
+	"github.com/LexWebDev/siwx-go/internal/testvectors"
+	"github.com/LexWebDev/siwx-go/solana"
 )
 
 func vector(t *testing.T, name string) string {
 	t.Helper()
 
-	vectorsOnce.Do(func() {
-		content, err := os.ReadFile("testdata/vectors.json")
-		if err != nil {
-			t.Fatal(err)
-		}
-		if err := json.Unmarshal(content, &vectors); err != nil {
-			t.Fatal(err)
-		}
-	})
+	return testvectors.Get(t, name)
+}
 
-	value, found := vectors[name]
-	if !found {
-		t.Fatalf("unknown vector %s", name)
-	}
-
-	return value
+func withContracts(checker evm.ContractChecker) []siwx.SignatureVerifier {
+	return []siwx.SignatureVerifier{evm.New(checker), solana.New()}
 }
 
 type seededStore struct {

@@ -1,4 +1,4 @@
-package siwx
+package evm
 
 import (
 	"bytes"
@@ -8,8 +8,8 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"net"
 	"net/http"
-	"net/url"
 	"strings"
 	"time"
 )
@@ -20,28 +20,37 @@ const (
 	maxRPCBodyBytes   = 1 << 20
 	wordHexLength     = 64
 	signatureOffset   = 64
+	revertedCode      = 3
 )
 
-// RPCContractChecker verifies EIP-1271 signatures through eth_call.
-type RPCContractChecker struct {
+var errReverted = errors.New("evm: execution reverted")
+
+// Transport failures. They carry no endpoint, because RPC URLs often hold an API key.
+var (
+	ErrRPCUnreachable = errors.New("evm: rpc unreachable")
+	ErrRPCTimeout     = errors.New("evm: rpc timeout")
+)
+
+// RPCChecker verifies EIP-1271 signatures through eth_call.
+type RPCChecker struct {
 	url    string
 	urls   map[string]string
 	client *http.Client
 }
 
-// NewRPCContractChecker returns a checker. With urls set, only those CAIP-2 chains are
-// served and url is ignored; otherwise url serves every chain.
-func NewRPCContractChecker(url string, urls map[string]string) *RPCContractChecker {
-	return &RPCContractChecker{
+// NewRPCChecker returns a checker. With urls set, only those CAIP-2 chains are served and
+// url is ignored; otherwise url serves every chain.
+func NewRPCChecker(url string, urls map[string]string) *RPCChecker {
+	return &RPCChecker{
 		url:    url,
 		urls:   urls,
 		client: &http.Client{Timeout: rpcTimeout},
 	}
 }
 
-// IsValid reports whether the contract at address accepts signature. Its errors never
-// contain the endpoint, which often carries an API key.
-func (checker *RPCContractChecker) IsValid(ctx context.Context, address, hash, signature, chainID string) (bool, error) {
+// IsValid reports whether the contract at address accepts signature. A revert is a plain
+// rejection. Errors are fixed strings: nothing from the node or the endpoint reaches them.
+func (checker *RPCChecker) IsValid(ctx context.Context, address, hash, signature, chainID string) (bool, error) {
 	if checker == nil {
 		return false, nil
 	}
@@ -57,6 +66,9 @@ func (checker *RPCContractChecker) IsValid(ctx context.Context, address, hash, s
 	}
 
 	result, err := checker.ethCall(ctx, endpoint, address, calldata)
+	if errors.Is(err, errReverted) {
+		return false, nil
+	}
 	if err != nil {
 		return false, err
 	}
@@ -64,7 +76,7 @@ func (checker *RPCContractChecker) IsValid(ctx context.Context, address, hash, s
 	return strings.HasPrefix(result, eip1271MagicValue), nil
 }
 
-func (checker *RPCContractChecker) endpointFor(chainID string) string {
+func (checker *RPCChecker) endpointFor(chainID string) string {
 	if len(checker.urls) == 0 {
 		return checker.url
 	}
@@ -72,7 +84,7 @@ func (checker *RPCContractChecker) endpointFor(chainID string) string {
 	return checker.urls[chainID]
 }
 
-func (checker *RPCContractChecker) ethCall(ctx context.Context, endpoint, address, calldata string) (string, error) {
+func (checker *RPCChecker) ethCall(ctx context.Context, endpoint, address, calldata string) (string, error) {
 	payload, err := json.Marshal(map[string]any{
 		"jsonrpc": "2.0",
 		"id":      1,
@@ -85,18 +97,18 @@ func (checker *RPCContractChecker) ethCall(ctx context.Context, endpoint, addres
 
 	request, err := http.NewRequestWithContext(ctx, http.MethodPost, endpoint, bytes.NewReader(payload))
 	if err != nil {
-		return "", errors.New("siwx: invalid rpc endpoint")
+		return "", errors.New("evm: invalid rpc endpoint")
 	}
 	request.Header.Set("Content-Type", "application/json")
 
 	response, err := checker.client.Do(request)
 	if err != nil {
-		return "", withoutEndpoint(err)
+		return "", transportFailure(err)
 	}
 	defer func() { _ = response.Body.Close() }()
 
 	if response.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("siwx: rpc answered %d", response.StatusCode)
+		return "", fmt.Errorf("evm: rpc answered %d", response.StatusCode)
 	}
 
 	return decodeRPCResult(response.Body)
@@ -106,28 +118,32 @@ func decodeRPCResult(body io.Reader) (string, error) {
 	var decoded struct {
 		Result string `json:"result"`
 		Error  *struct {
-			Message string `json:"message"`
+			Code int `json:"code"`
 		} `json:"error"`
 	}
 
 	if err := json.NewDecoder(io.LimitReader(body, maxRPCBodyBytes)).Decode(&decoded); err != nil {
-		return "", err
+		return "", errors.New("evm: malformed rpc response")
+	}
+
+	if decoded.Error != nil && decoded.Error.Code == revertedCode {
+		return "", errReverted
 	}
 
 	if decoded.Error != nil {
-		return "", fmt.Errorf("siwx: rpc error: %s", decoded.Error.Message)
+		return "", fmt.Errorf("evm: rpc error %d", decoded.Error.Code)
 	}
 
 	return decoded.Result, nil
 }
 
-func withoutEndpoint(err error) error {
-	var requestError *url.Error
-	if errors.As(err, &requestError) {
-		return requestError.Err
+func transportFailure(err error) error {
+	var networkError net.Error
+	if errors.As(err, &networkError) && networkError.Timeout() {
+		return ErrRPCTimeout
 	}
 
-	return err
+	return ErrRPCUnreachable
 }
 
 func eip1271Calldata(hash, signature string) (string, bool) {

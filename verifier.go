@@ -23,12 +23,6 @@ type SignatureVerifier interface {
 	NormaliseAddress(address string) string
 }
 
-// ContractSignatureChecker verifies a smart contract wallet signature on the given chain.
-// Returned errors can reach logs, so they must not carry secrets.
-type ContractSignatureChecker interface {
-	IsValid(ctx context.Context, address, hash, signature, chainID string) (bool, error)
-}
-
 // NonceStore issues single-use nonces. Consume must be atomic: of two parallel calls
 // with one nonce, exactly one succeeds, and the other returns ErrInvalidNonce.
 type NonceStore interface {
@@ -37,19 +31,15 @@ type NonceStore interface {
 	Consume(ctx context.Context, nonce string) error
 }
 
-// Config configures a Verifier. Only Nonces is required, but an empty Domains rejects
-// every message.
+// Config configures a Verifier. Nonces and Verifiers are required, and an empty Domains
+// rejects every message.
 type Config struct {
 	// Domains lists allowed domains exactly as wallets send them, with a port if any.
 	Domains []string
-	// Namespaces lists enabled namespaces. Nil means eip155 and solana.
-	Namespaces []string
 	// ClockSkew tolerates wallet clocks running ahead. Zero means five minutes.
 	ClockSkew time.Duration
 	Nonces    NonceStore
-	// Contracts enables EIP-1271 for EVM signatures.
-	Contracts ContractSignatureChecker
-	// Verifiers adds or replaces namespace verifiers.
+	// Verifiers lists the enabled namespaces, such as evm.New(nil) and solana.New().
 	Verifiers []SignatureVerifier
 	// Now replaces time.Now.
 	Now func() time.Time
@@ -68,7 +58,6 @@ type Session struct {
 // Verifier checks signed messages. It is safe for concurrent use.
 type Verifier struct {
 	domains   []string
-	enabled   []string
 	verifiers map[string]SignatureVerifier
 	nonces    NonceStore
 	clockSkew time.Duration
@@ -80,26 +69,23 @@ func New(config Config) (*Verifier, error) {
 	if config.Nonces == nil {
 		return nil, errors.New("siwx: a nonce store is required")
 	}
+	if len(config.Verifiers) == 0 {
+		return nil, errors.New("siwx: at least one verifier is required")
+	}
 
 	verifier := &Verifier{
 		domains:   normaliseDomains(config.Domains),
-		enabled:   config.Namespaces,
 		verifiers: map[string]SignatureVerifier{},
 		nonces:    config.Nonces,
 		clockSkew: resolveClockSkew(config.ClockSkew),
 		now:       config.Now,
 	}
 
-	if verifier.enabled == nil {
-		verifier.enabled = []string{"eip155", "solana"}
-	}
 	if verifier.now == nil {
 		verifier.now = time.Now
 	}
 
-	builtIn := []SignatureVerifier{NewEIP155Verifier(config.Contracts), NewSolanaVerifier()}
-
-	for _, registered := range append(builtIn, config.Verifiers...) {
+	for _, registered := range config.Verifiers {
 		verifier.verifiers[registered.Namespace()] = registered
 	}
 
@@ -162,10 +148,6 @@ func (verifier *Verifier) Verify(ctx context.Context, raw, signature string) (*S
 }
 
 func (verifier *Verifier) verifierFor(namespace string) (SignatureVerifier, error) {
-	if !slices.Contains(verifier.enabled, namespace) {
-		return nil, ErrUnsupportedNamespace
-	}
-
 	chainVerifier, registered := verifier.verifiers[namespace]
 	if !registered {
 		return nil, ErrUnsupportedNamespace

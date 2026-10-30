@@ -1,4 +1,5 @@
-package siwx
+// Package evm verifies EVM signatures for the eip155 namespace.
+package evm
 
 import (
 	"context"
@@ -9,6 +10,8 @@ import (
 
 	"github.com/decred/dcrd/dcrec/secp256k1/v4/ecdsa"
 	"golang.org/x/crypto/sha3"
+
+	siwx "github.com/LexWebDev/siwx-go"
 )
 
 const (
@@ -19,23 +22,29 @@ const (
 
 var evmAddressPattern = regexp.MustCompile(`^0x[a-fA-F0-9]{40}$`)
 
-// EIP155Verifier verifies EVM signatures through EIP-191 recovery and, optionally, EIP-1271.
-type EIP155Verifier struct {
-	contracts ContractSignatureChecker
+// ContractChecker verifies a smart contract wallet signature on the given chain.
+// Returned errors can reach logs, so they must not carry secrets or remote text.
+type ContractChecker interface {
+	IsValid(ctx context.Context, address, hash, signature, chainID string) (bool, error)
 }
 
-// NewEIP155Verifier returns a verifier. A nil contracts disables EIP-1271.
-func NewEIP155Verifier(contracts ContractSignatureChecker) *EIP155Verifier {
-	return &EIP155Verifier{contracts: contracts}
+// Verifier verifies signatures through EIP-191 recovery and, optionally, EIP-1271.
+type Verifier struct {
+	contracts ContractChecker
+}
+
+// New returns a verifier. A nil contracts disables EIP-1271.
+func New(contracts ContractChecker) *Verifier {
+	return &Verifier{contracts: contracts}
 }
 
 // Namespace returns eip155.
-func (verifier *EIP155Verifier) Namespace() string {
+func (verifier *Verifier) Namespace() string {
 	return "eip155"
 }
 
 // Verify reports whether signature belongs to the message address.
-func (verifier *EIP155Verifier) Verify(ctx context.Context, message *Message, signature string) (bool, error) {
+func (verifier *Verifier) Verify(ctx context.Context, message *siwx.Message, signature string) (bool, error) {
 	if !evmAddressPattern.MatchString(message.Address) {
 		return false, nil
 	}
@@ -55,7 +64,7 @@ func (verifier *EIP155Verifier) Verify(ctx context.Context, message *Message, si
 }
 
 // NormaliseAddress lowercases the address.
-func (verifier *EIP155Verifier) NormaliseAddress(address string) string {
+func (verifier *Verifier) NormaliseAddress(address string) string {
 	return strings.ToLower(address)
 }
 

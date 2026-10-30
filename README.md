@@ -32,8 +32,9 @@ A naive SIWE verifier works on the desktop happy path and breaks the moment a re
 | `eip155` | every EVM chain | secp256k1 + keccak256, EIP-191, optional EIP-1271 |
 | `solana` | Solana mainnet/devnet | ed25519, base58 and base64 signatures |
 
-Pass your own `SignatureVerifier` through `Config.Verifiers` and name its namespace in
-`Config.Namespaces` to add a chain without touching the core.
+Each chain is a separate package, and only what you pass in `Config.Verifiers` is enabled. A
+Solana-only app never compiles the EVM dependencies, and your own `SignatureVerifier` plugs in the
+same way as the built-in ones.
 
 ## Installation
 
@@ -46,11 +47,12 @@ Requires Go 1.26 or newer.
 ## Usage
 
 ```go
-store := siwx.NewMemoryNonceStore(10*time.Minute, nil)
+store := memorynonce.New(10 * time.Minute)
 
 verifier, err := siwx.New(siwx.Config{
-	Domains: []string{"app.example"},
-	Nonces:  store,
+	Domains:   []string{"app.example"},
+	Nonces:    store,
+	Verifiers: []siwx.SignatureVerifier{evm.New(nil), solana.New()},
 })
 if err != nil {
 	log.Fatal(err)
@@ -95,7 +97,7 @@ the unique index cover `(namespace, address)`.
 
 | Store | Use it for |
 |---|---|
-| `siwx.NewMemoryNonceStore` | a single process |
+| `memorynonce.New` | a single process |
 | `redisnonce.New` | several processes; needs Redis 6.2+ for `GETDEL` |
 
 A custom `NonceStore` must make `Consume` atomic. A read followed by a delete lets two parallel
@@ -105,8 +107,9 @@ requests with the same signed message both pass.
 
 Every rejection wraps a `*siwx.Error` you can match with `errors.Is`. Send `failure.Code` to the
 client, never `err.Error()`. When the EIP-1271 call fails, the error wraps both
-`ErrInvalidSignature` and the cause, so the login is refused and you can still log the outage. Any
-other error, such as a Redis outage, is an infrastructure failure and comes through unchanged.
+`ErrInvalidSignature` and the cause, such as `evm.ErrRPCTimeout`, so the login is refused and you
+can still log the outage. Any other error, such as a Redis outage, is an infrastructure failure and
+comes through unchanged.
 
 | Code | Sentinel | Meaning |
 |---|---|---|
@@ -132,16 +135,20 @@ networks belong to `eip155`. An app registering EVM and Solana together always f
 
 ## Smart contract wallets (EIP-1271)
 
-Off by default. Pass a checker, and a signature that fails recovery gets a second chance through
-`eth_call` to `isValidSignature`:
+Off by default. Pass a checker to `evm.New`, and a signature that fails recovery gets a second
+chance through `eth_call` to `isValidSignature`:
 
 ```go
-contracts := siwx.NewRPCContractChecker("", map[string]string{
+contracts := evm.NewRPCChecker("", map[string]string{
 	"eip155:1":    mainnetURL,
 	"eip155:8453": baseURL,
 })
 
-verifier, err := siwx.New(siwx.Config{Domains: domains, Nonces: store, Contracts: contracts})
+verifier, err := siwx.New(siwx.Config{
+	Domains:   domains,
+	Nonces:    store,
+	Verifiers: []siwx.SignatureVerifier{evm.New(contracts), solana.New()},
+})
 ```
 
 Once the map is set, a chain outside it fails verification. A single URL as the first argument
@@ -152,8 +159,9 @@ serves every chain instead, so the signature is checked on that endpoint's netwo
 contract-wallet accounts by `(ChainID, Address)`, or map only the chain you trust.
 
 EOA logins never pay for this: the call happens only after recovery fails, and only for a live
-nonce. This is the only place the package touches the network, and its errors never contain the
-endpoint, because RPC URLs often carry an API key.
+nonce. A contract that reverts is a plain rejection. This is the only place the module touches the
+network, and its errors are fixed strings: neither the endpoint, which often carries an API key,
+nor text from the node ever reaches them.
 
 ## Trying it with real wallets
 

@@ -1,4 +1,5 @@
-package siwx
+// Package solana verifies ed25519 signatures for the solana namespace.
+package solana
 
 import (
 	"context"
@@ -6,23 +7,25 @@ import (
 	"encoding/base64"
 
 	"github.com/mr-tron/base58"
+
+	siwx "github.com/LexWebDev/siwx-go"
 )
 
-// SolanaVerifier verifies ed25519 signatures encoded in base58 or base64.
-type SolanaVerifier struct{}
+// Verifier verifies signatures encoded in base58 or base64.
+type Verifier struct{}
 
-// NewSolanaVerifier returns a verifier.
-func NewSolanaVerifier() *SolanaVerifier {
-	return &SolanaVerifier{}
+// New returns a verifier.
+func New() *Verifier {
+	return &Verifier{}
 }
 
 // Namespace returns solana.
-func (verifier *SolanaVerifier) Namespace() string {
+func (verifier *Verifier) Namespace() string {
 	return "solana"
 }
 
 // Verify reports whether signature belongs to the message address.
-func (verifier *SolanaVerifier) Verify(_ context.Context, message *Message, signature string) (bool, error) {
+func (verifier *Verifier) Verify(_ context.Context, message *siwx.Message, signature string) (bool, error) {
 	publicKey, err := base58.Decode(message.Address)
 	if err != nil || len(publicKey) != ed25519.PublicKeySize {
 		return false, nil
@@ -37,7 +40,7 @@ func (verifier *SolanaVerifier) Verify(_ context.Context, message *Message, sign
 }
 
 // NormaliseAddress returns the address unchanged, because base58 is case-sensitive.
-func (verifier *SolanaVerifier) NormaliseAddress(address string) string {
+func (verifier *Verifier) NormaliseAddress(address string) string {
 	return address
 }
 

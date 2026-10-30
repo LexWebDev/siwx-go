@@ -11,6 +11,9 @@ import (
 	"time"
 
 	siwx "github.com/LexWebDev/siwx-go"
+	"github.com/LexWebDev/siwx-go/evm"
+	"github.com/LexWebDev/siwx-go/memorynonce"
+	"github.com/LexWebDev/siwx-go/solana"
 )
 
 const maxBodyBytes = 8192
@@ -21,11 +24,12 @@ type verifyRequest struct {
 }
 
 func main() {
-	store := siwx.NewMemoryNonceStore(nonceTTL(), nil)
+	store := memorynonce.New(nonceTTL())
 
 	verifier, err := siwx.New(siwx.Config{
-		Domains: strings.Split(setting("SIWX_ALLOWED_DOMAINS", "localhost:3000"), ","),
-		Nonces:  store,
+		Domains:   strings.Split(setting("SIWX_ALLOWED_DOMAINS", "localhost:3000"), ","),
+		Nonces:    store,
+		Verifiers: []siwx.SignatureVerifier{evm.New(nil), solana.New()},
 	})
 	if err != nil {
 		log.Fatal(err)

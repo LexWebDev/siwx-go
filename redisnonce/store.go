@@ -1,4 +1,4 @@
-// Package redisnonce stores siwx nonces in Redis 6.2 or newer.
+// Package redisnonce stores siwx nonces in Redis 6.2 or newer, shared between processes.
 package redisnonce
 
 import (

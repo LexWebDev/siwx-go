@@ -7,6 +7,8 @@ import (
 	"testing"
 
 	siwx "github.com/LexWebDev/siwx-go"
+	"github.com/LexWebDev/siwx-go/evm"
+	"github.com/LexWebDev/siwx-go/solana"
 )
 
 const (
@@ -25,6 +27,9 @@ func newVerifier(t *testing.T, config siwx.Config) *siwx.Verifier {
 	}
 	if config.Nonces == nil {
 		config.Nonces = newSeededStore(signedNonce)
+	}
+	if config.Verifiers == nil {
+		config.Verifiers = withContracts(nil)
 	}
 	if config.Now == nil {
 		config.Now = fixedClock(afterSigning)
@@ -153,8 +158,8 @@ func TestRejectsWithTheExpectedCode(t *testing.T) {
 		"unsupported version":        {siwx.Config{}, wrongVersion, siwx.ErrInvalidMessage},
 		"uri host differs":           {siwx.Config{Domains: []string{"dapp.expert", "evil.example"}}, foreignURI, siwx.ErrInvalidDomain},
 		"uri port differs":           {siwx.Config{Domains: []string{"localhost:3000", "localhost"}, Nonces: newSeededStore(phantomNonce), Now: fixedClock(afterPhantom)}, foreignPort, siwx.ErrInvalidDomain},
-		"disabled namespace":         {siwx.Config{Namespaces: []string{"solana"}}, evm, siwx.ErrUnsupportedNamespace},
-		"namespace without verifier": {siwx.Config{Namespaces: []string{"eip155", "bip122"}}, strings.Replace(evm, "Chain ID: 1", "Chain ID: bip122:000000000019d6689c085ae165831e93", 1), siwx.ErrUnsupportedNamespace},
+		"disabled namespace":         {siwx.Config{Verifiers: []siwx.SignatureVerifier{solana.New()}}, evm, siwx.ErrUnsupportedNamespace},
+		"namespace without verifier": {siwx.Config{}, strings.Replace(evm, "Chain ID: 1", "Chain ID: bip122:000000000019d6689c085ae165831e93", 1), siwx.ErrUnsupportedNamespace},
 	}
 
 	for name, testCase := range cases {
@@ -193,7 +198,13 @@ func TestToleratesSpacesAroundEntriesOfTheAllowList(t *testing.T) {
 }
 
 func TestRequiresANonceStore(t *testing.T) {
-	if _, err := siwx.New(siwx.Config{Domains: []string{"dapp.expert"}}); err == nil {
+	if _, err := siwx.New(siwx.Config{Verifiers: withContracts(nil)}); err == nil {
+		t.Fatal("expected an error")
+	}
+}
+
+func TestRequiresAVerifier(t *testing.T) {
+	if _, err := siwx.New(siwx.Config{Nonces: newSeededStore()}); err == nil {
 		t.Fatal("expected an error")
 	}
 }
@@ -216,7 +227,7 @@ func TestErrorsCarryTheMachineCode(t *testing.T) {
 
 func TestFallsBackToTheContractCheckerWhenRecoveryDoesNotMatch(t *testing.T) {
 	checker := &countingChecker{verdict: true}
-	verifier := newVerifier(t, siwx.Config{Contracts: checker})
+	verifier := newVerifier(t, siwx.Config{Verifiers: withContracts(checker)})
 	raw := strings.Replace(vector(t, "EVM_MESSAGE"), "Chain ID: 1", "Chain ID: 8453", 1)
 
 	session, err := verifier.Verify(context.Background(), raw, vector(t, "EVM_FOREIGN_SIG"))
@@ -230,7 +241,7 @@ func TestFallsBackToTheContractCheckerWhenRecoveryDoesNotMatch(t *testing.T) {
 }
 
 func TestRejectsWhenTheContractCheckerDeclines(t *testing.T) {
-	verifier := newVerifier(t, siwx.Config{Contracts: &countingChecker{}})
+	verifier := newVerifier(t, siwx.Config{Verifiers: withContracts(&countingChecker{})})
 
 	_, err := verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_FOREIGN_SIG"))
 	if !errors.Is(err, siwx.ErrInvalidSignature) {
@@ -241,7 +252,7 @@ func TestRejectsWhenTheContractCheckerDeclines(t *testing.T) {
 func TestDoesNotCallTheCheckerWhenRecoveryAlreadyMatches(t *testing.T) {
 	checker := &countingChecker{verdict: true}
 
-	if _, err := newVerifier(t, siwx.Config{Contracts: checker}).Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_SIG")); err != nil {
+	if _, err := newVerifier(t, siwx.Config{Verifiers: withContracts(checker)}).Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_SIG")); err != nil {
 		t.Fatal(err)
 	}
 
@@ -252,7 +263,7 @@ func TestDoesNotCallTheCheckerWhenRecoveryAlreadyMatches(t *testing.T) {
 
 func TestSpendsNoRpcCallOnANonceThatWasNeverIssued(t *testing.T) {
 	checker := &countingChecker{verdict: true}
-	verifier := newVerifier(t, siwx.Config{Contracts: checker, Nonces: newSeededStore()})
+	verifier := newVerifier(t, siwx.Config{Verifiers: withContracts(checker), Nonces: newSeededStore()})
 
 	_, err := verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_FOREIGN_SIG"))
 	if !errors.Is(err, siwx.ErrInvalidNonce) {
@@ -300,8 +311,7 @@ func (verifier *recordingVerifier) NormaliseAddress(address string) string {
 func TestAcceptsACustomVerifierWithoutTouchingTheCore(t *testing.T) {
 	custom := &recordingVerifier{}
 	verifier := newVerifier(t, siwx.Config{
-		Namespaces: []string{"eip155", "bip122"},
-		Verifiers:  []siwx.SignatureVerifier{custom},
+		Verifiers: []siwx.SignatureVerifier{custom},
 	})
 	raw := strings.Replace(vector(t, "EVM_MESSAGE"), "Chain ID: 1", "Chain ID: bip122:000000000019d6689c085ae165831e93", 1)
 
@@ -317,7 +327,7 @@ func TestAcceptsACustomVerifierWithoutTouchingTheCore(t *testing.T) {
 
 func TestReportsAnRpcOutageAlongsideTheInvalidSignature(t *testing.T) {
 	outage := errors.New("rpc unavailable")
-	verifier := newVerifier(t, siwx.Config{Contracts: &countingChecker{failure: outage}})
+	verifier := newVerifier(t, siwx.Config{Verifiers: withContracts(&countingChecker{failure: outage})})
 
 	_, err := verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_FOREIGN_SIG"))
 
@@ -333,7 +343,7 @@ func TestReportsAnRpcOutageAlongsideTheInvalidSignature(t *testing.T) {
 
 func TestKeepsTheNonceWhenTheRpcIsDown(t *testing.T) {
 	store := newSeededStore(signedNonce)
-	verifier := newVerifier(t, siwx.Config{Nonces: store, Contracts: &countingChecker{failure: errors.New("down")}})
+	verifier := newVerifier(t, siwx.Config{Nonces: store, Verifiers: withContracts(&countingChecker{failure: errors.New("down")})})
 
 	_, _ = verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_FOREIGN_SIG"))
 
@@ -343,9 +353,9 @@ func TestKeepsTheNonceWhenTheRpcIsDown(t *testing.T) {
 }
 
 func TestSurvivesATypedNilContractChecker(t *testing.T) {
-	var checker *siwx.RPCContractChecker
+	var checker *evm.RPCChecker
 
-	verifier := newVerifier(t, siwx.Config{Contracts: checker})
+	verifier := newVerifier(t, siwx.Config{Verifiers: withContracts(checker)})
 
 	_, err := verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_FOREIGN_SIG"))
 	if !errors.Is(err, siwx.ErrInvalidSignature) {
