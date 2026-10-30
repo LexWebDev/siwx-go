@@ -1,0 +1,2 @@
+go test fuzz v1
+string("0 wants you to sign in with your 0 account:\n0\nURI: \r\r\nVersion: 0\nChain ID: 0\nNonce: 00000000\nIssued At: 0000-01-10t00:00:00Z")

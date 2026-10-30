@@ -1,0 +1,1869 @@
+[
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": [
+    "urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ"
+   ]
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Solana account:\n8D3G5mxsEXV1n92Lbq85BQSQGaVHBsWNxfYrd6ocYEEW\n\nSign in with Solana to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Solana account:\n8D3G5mxsEXV1n92Lbq85BQSQGaVHBsWNxfYrd6ocYEEW\n\nSign in with Solana to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Solana",
+   "address": "8D3G5mxsEXV1n92Lbq85BQSQGaVHBsWNxfYrd6ocYEEW",
+   "statement": "Sign in with Solana to the application.",
+   "signedStatement": "Sign in with Solana to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "solana",
+   "chainId": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "localhost:3000 wants you to sign in with your Solana account:\n3mLXhf4i5d5U46kPkwY45Ec3bBxbYvgKa8cwgoxGLMPG\n\nSign in to the SIWX stand.\n\nURI: http://localhost:3000\nVersion: 1\nChain ID: solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp\nNonce: LZAsP6lEAHmRQuQ4\nIssued At: 2026-07-30T14:17:00.843Z",
+  "expected": {
+   "ok": true,
+   "raw": "localhost:3000 wants you to sign in with your Solana account:\n3mLXhf4i5d5U46kPkwY45Ec3bBxbYvgKa8cwgoxGLMPG\n\nSign in to the SIWX stand.\n\nURI: http://localhost:3000\nVersion: 1\nChain ID: solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp\nNonce: LZAsP6lEAHmRQuQ4\nIssued At: 2026-07-30T14:17:00.843Z",
+   "scheme": "",
+   "domain": "localhost:3000",
+   "network": "Solana",
+   "address": "3mLXhf4i5d5U46kPkwY45Ec3bBxbYvgKa8cwgoxGLMPG",
+   "statement": "Sign in to the SIWX stand.",
+   "signedStatement": "Sign in to the SIWX stand.",
+   "uri": "http://localhost:3000",
+   "version": "1",
+   "namespace": "solana",
+   "chainId": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+   "nonce": "LZAsP6lEAHmRQuQ4",
+   "issuedAt": "2026-07-30T14:17:00",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "https://dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "https://dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "https",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "http://localhost:3000 wants you to sign in with your Solana account:\n3mLXhf4i5d5U46kPkwY45Ec3bBxbYvgKa8cwgoxGLMPG\n\nSign in to the SIWX stand.\n\nURI: http://localhost:3000\nVersion: 1\nChain ID: solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp\nNonce: LZAsP6lEAHmRQuQ4\nIssued At: 2026-07-30T14:17:00.843Z",
+  "expected": {
+   "ok": true,
+   "raw": "http://localhost:3000 wants you to sign in with your Solana account:\n3mLXhf4i5d5U46kPkwY45Ec3bBxbYvgKa8cwgoxGLMPG\n\nSign in to the SIWX stand.\n\nURI: http://localhost:3000\nVersion: 1\nChain ID: solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp\nNonce: LZAsP6lEAHmRQuQ4\nIssued At: 2026-07-30T14:17:00.843Z",
+   "scheme": "http",
+   "domain": "localhost:3000",
+   "network": "Solana",
+   "address": "3mLXhf4i5d5U46kPkwY45Ec3bBxbYvgKa8cwgoxGLMPG",
+   "statement": "Sign in to the SIWX stand.",
+   "signedStatement": "Sign in to the SIWX stand.",
+   "uri": "http://localhost:3000",
+   "version": "1",
+   "namespace": "solana",
+   "chainId": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+   "nonce": "LZAsP6lEAHmRQuQ4",
+   "issuedAt": "2026-07-30T14:17:00",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": " ",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "garbage",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "garbage\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.1Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.1Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.123456789Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.123456789Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T15:34:56+03:00",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T15:34:56+03:00",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T07:34:56-05:00",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T07:34:56-05:00",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30t12:34:56z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30t12:34:56z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: now",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: tomorrow",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: +1 day",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-02-31T12:34:56Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-13-01T12:34:56Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T25:00:00Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:60:00Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:60Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30 12:34:56Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56+0300",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T1:34:56Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56,5Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 0000-01-01T00:00:00Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 0000-01-01T00:00:00Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "0000-01-01T00:00:00",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 137\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 137\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:137",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 0\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 0\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:0",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 007\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 007\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:007",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 99999999999999999999\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 99999999999999999999\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:99999999999999999999",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: eip155:1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: eip155:1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: eip155:137\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: eip155:137\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:137",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: eip155:\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: :1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: eip155:!!!\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: mainnet\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: solana:mainnet\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: solana:mainnet\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "solana",
+   "chainId": "solana:mainnet",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "solana",
+   "chainId": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpX\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: EIP155:1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: ab:1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: abcdefghi:1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: bip122:000000000019d6689c085ae165831e93\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: bip122:000000000019d6689c085ae165831e93\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "bip122",
+   "chainId": "bip122:000000000019d6689c085ae165831e93",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: cosmos:cosmoshub-4\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: cosmos:cosmoshub-4\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "cosmos",
+   "chainId": "cosmos:cosmoshub-4",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: a:b:c\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: -1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1.5\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: \nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: abc\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 1234567\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 12345678\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 12345678\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "12345678",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: abcd-1234-efgh\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: abcd 1234\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: Ключ12345678\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nURI: https://dapp.expert",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nNonce: zzzz9999zzzz",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nInjected: value",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\n- https://dapp.expert",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- a\n- b",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- a\n- b",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": [
+    "a",
+    "b"
+   ]
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- a\nNonce: zzzz9999zzzz",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n\n- a",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- a\nResources:\n- b",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nRequest ID: req-42",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nRequest ID: req-42",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "req-42",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nRequest ID: ",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nExpiration Time: 2026-07-30T13:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nExpiration Time: 2026-07-30T13:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "2026-07-30T13:34:56",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nNot Before: 2026-07-30T12:00:00.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nNot Before: 2026-07-30T12:00:00.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "2026-07-30T12:00:00",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nExpiration Time: 2026-07-30T13:34:56.000Z\nNot Before: 2026-07-30T12:00:00.000Z\nRequest ID: x\nResources:\n- urn:recap:e30",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nExpiration Time: 2026-07-30T13:34:56.000Z\nNot Before: 2026-07-30T12:00:00.000Z\nRequest ID: x\nResources:\n- urn:recap:e30",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "2026-07-30T13:34:56",
+   "notBefore": "2026-07-30T12:00:00",
+   "requestId": "x",
+   "resources": [
+    "urn:recap:e30"
+   ]
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\n\n",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\n",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z ",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\t",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\u0000",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\u000b",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\r\n",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nVersion: 1",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nChain ID: 1",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\n\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\n\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "",
+   "signedStatement": "",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\n\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\n\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "",
+   "signedStatement": "",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": [
+    "urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ"
+   ]
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nNote: colon inside\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nNote: colon inside\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Note: colon inside",
+   "signedStatement": "Note: colon inside",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nNote: colon inside\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nNote: colon inside\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Note: colon inside",
+   "signedStatement": "Note: colon inside",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": [
+    "urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ"
+   ]
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nURI: looks like a field\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nURI: looks like a field\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nLine one\nLine two\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nLine one\nLine two\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nЮникод в тексте\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nЮникод в тексте\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Юникод в тексте",
+   "signedStatement": "Юникод в тексте",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nЮникод в тексте\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nЮникод в тексте\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Юникод в тексте",
+   "signedStatement": "Юникод в тексте",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": [
+    "urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ"
+   ]
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application. I further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application. I further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application. I further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.",
+   "signedStatement": "Sign in with Ethereum to the application. I further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application. I further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application. I further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application. I further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": [
+    "urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ"
+   ]
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nI further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nI further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "I further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.",
+   "signedStatement": "I further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nI further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nI further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "",
+   "signedStatement": "I further authorize the stated URI to perform the following actions on my behalf: (1) 'request': 'personal_sign' for 'eip155'.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": [
+    "urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ"
+   ]
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\n   \n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\n   \n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "   ",
+   "signedStatement": "   ",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\n   \n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\n   \n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "   ",
+   "signedStatement": "   ",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": [
+    "urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ"
+   ]
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nResources:\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nResources:\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Resources:",
+   "signedStatement": "Resources:",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nResources:\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nResources:\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\nResources:\n- urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Resources:",
+   "signedStatement": "Resources:",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": [
+    "urn:recap:eyJhdHQiOnsiZWlwMTU1Ijp7InJlcXVlc3QvcGVyc29uYWxfc2lnbiI6W3t9XX19fQ"
+   ]
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Bitcoin Testnet account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Bitcoin Testnet account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Bitcoin Testnet",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert  wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": " dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your  account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "ftp://dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "ftp://dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "ftp",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "1http://dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "1http://dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "1http://dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "https:// wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "https:// wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "https://",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "https://dapp.expert:8443 wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "https://dapp.expert:8443 wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "https",
+   "domain": "dapp.expert:8443",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "ДАПП.рф wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "ДАПП.рф wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "ДАПП.рф",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\r\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\r\n\r\nSign in with Ethereum to the application.\r\n\r\nURI: https://dapp.expert\r\nVersion: 1\r\nChain ID: 1\r\nNonce: 8Kc2fQ1pXm9Zr4Lt\r\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: \nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: \nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\r\r\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: \r\r\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z\rNonce: zzzz9999zzzz",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "\n\ndapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8\n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n   \n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n  0x70997970C51812dc3A010C7d01b50e0d17dc79C8  \n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+  "expected": {
+   "ok": true,
+   "raw": "dapp.expert wants you to sign in with your Ethereum account:\n  0x70997970C51812dc3A010C7d01b50e0d17dc79C8  \n\nSign in with Ethereum to the application.\n\nURI: https://dapp.expert\nVersion: 1\nChain ID: 1\nNonce: 8Kc2fQ1pXm9Zr4Lt\nIssued At: 2026-07-30T12:34:56.000Z",
+   "scheme": "",
+   "domain": "dapp.expert",
+   "network": "Ethereum",
+   "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+   "statement": "Sign in with Ethereum to the application.",
+   "signedStatement": "Sign in with Ethereum to the application.",
+   "uri": "https://dapp.expert",
+   "version": "1",
+   "namespace": "eip155",
+   "chainId": "eip155:1",
+   "nonce": "8Kc2fQ1pXm9Zr4Lt",
+   "issuedAt": "2026-07-30T12:34:56",
+   "expiration": "",
+   "notBefore": "",
+   "requestId": "",
+   "resources": []
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ },
+ {
+  "raw": "dapp.expert wants you to sign in with your Ethereum account:\n0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+  "expected": {
+   "ok": false,
+   "code": "siwx_invalid_message"
+  }
+ }
+]

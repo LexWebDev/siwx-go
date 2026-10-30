@@ -43,24 +43,29 @@ func (verifier *Verifier) Namespace() string {
 	return "eip155"
 }
 
-// Verify reports whether signature belongs to the message address.
-func (verifier *Verifier) Verify(ctx context.Context, message *siwx.Message, signature string) (bool, error) {
+// Verify says who signed for the message address, if anyone did.
+func (verifier *Verifier) Verify(ctx context.Context, message *siwx.Message, signature string) (siwx.SignerKind, error) {
 	if !evmAddressPattern.MatchString(message.Address) {
-		return false, nil
+		return siwx.SignerNone, nil
 	}
 
 	recovered, found := recoverAddress(message.Raw, signature)
 	if found && recovered == verifier.NormaliseAddress(message.Address) {
-		return true, nil
+		return siwx.SignerAccount, nil
 	}
 
 	if verifier.contracts == nil {
-		return false, nil
+		return siwx.SignerNone, nil
 	}
 
 	hash := "0x" + hex.EncodeToString(personalMessageHash(message.Raw))
 
-	return verifier.contracts.IsValid(ctx, message.Address, hash, signature, message.ChainID)
+	valid, err := verifier.contracts.IsValid(ctx, message.Address, hash, signature, message.ChainID)
+	if err != nil || !valid {
+		return siwx.SignerNone, err
+	}
+
+	return siwx.SignerContract, nil
 }
 
 // NormaliseAddress lowercases the address.

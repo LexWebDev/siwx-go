@@ -48,6 +48,14 @@ func NewRPCChecker(url string, urls map[string]string) *RPCChecker {
 	}
 }
 
+// WithClient returns a copy of the checker that sends its requests through client.
+func (checker *RPCChecker) WithClient(client *http.Client) *RPCChecker {
+	configured := *checker
+	configured.client = client
+
+	return &configured
+}
+
 // IsValid reports whether the contract at address accepts signature. A revert is a plain
 // rejection. Errors are fixed strings: nothing from the node or the endpoint reaches them.
 func (checker *RPCChecker) IsValid(ctx context.Context, address, hash, signature, chainID string) (bool, error) {

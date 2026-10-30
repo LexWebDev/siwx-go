@@ -17,4 +17,5 @@ var (
 	ErrInvalidNonce         = &Error{Code: "siwx_invalid_nonce"}
 	ErrInvalidSignature     = &Error{Code: "siwx_invalid_signature"}
 	ErrUnsupportedNamespace = &Error{Code: "siwx_unsupported_namespace"}
+	ErrUnsupportedChain     = &Error{Code: "siwx_unsupported_chain"}
 )

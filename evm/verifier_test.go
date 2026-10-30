@@ -3,6 +3,7 @@ package evm_test
 import (
 	"context"
 	"encoding/hex"
+	"errors"
 	"strings"
 	"testing"
 
@@ -23,9 +24,9 @@ func parse(t *testing.T, raw string) *siwx.Message {
 }
 
 func verifies(message *siwx.Message, signature string) bool {
-	valid, err := evm.New(nil).Verify(context.Background(), message, signature)
+	signer, err := evm.New(nil).Verify(context.Background(), message, signature)
 
-	return valid && err == nil
+	return signer != siwx.SignerNone && err == nil
 }
 
 func TestRecoversTheSigner(t *testing.T) {
@@ -86,5 +87,42 @@ func TestRejectsAnAddressOfTheWrongShape(t *testing.T) {
 func TestLowercasesAddresses(t *testing.T) {
 	if address := evm.New(nil).NormaliseAddress("0xAbC"); address != "0xabc" {
 		t.Fatalf("address: %s", address)
+	}
+}
+
+type fixedChecker struct {
+	valid bool
+	err   error
+}
+
+func (checker fixedChecker) IsValid(context.Context, string, string, string, string) (bool, error) {
+	return checker.valid, checker.err
+}
+
+func TestSaysWhichKindOfSignerVerified(t *testing.T) {
+	message := parse(t, testvectors.Get(t, "EVM_MESSAGE"))
+	outage := errors.New("rpc down")
+
+	cases := map[string]struct {
+		checker   evm.ContractChecker
+		signature string
+		want      siwx.SignerKind
+		failure   error
+	}{
+		"recovered key":       {nil, testvectors.Get(t, "EVM_SIG"), siwx.SignerAccount, nil},
+		"no checker":          {nil, testvectors.Get(t, "EVM_FOREIGN_SIG"), siwx.SignerNone, nil},
+		"contract accepts":    {fixedChecker{valid: true}, testvectors.Get(t, "EVM_FOREIGN_SIG"), siwx.SignerContract, nil},
+		"contract declines":   {fixedChecker{}, testvectors.Get(t, "EVM_FOREIGN_SIG"), siwx.SignerNone, nil},
+		"contract check down": {fixedChecker{err: outage}, testvectors.Get(t, "EVM_FOREIGN_SIG"), siwx.SignerNone, outage},
+	}
+
+	for name, testCase := range cases {
+		t.Run(name, func(t *testing.T) {
+			signer, err := evm.New(testCase.checker).Verify(context.Background(), message, testCase.signature)
+
+			if signer != testCase.want || !errors.Is(err, testCase.failure) {
+				t.Fatalf("signer %v, err %v", signer, err)
+			}
+		})
 	}
 }

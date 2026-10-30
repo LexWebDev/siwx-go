@@ -22,9 +22,9 @@ func parse(t *testing.T, raw string) *siwx.Message {
 }
 
 func verifies(message *siwx.Message, signature string) bool {
-	valid, err := solana.New().Verify(context.Background(), message, signature)
+	signer, err := solana.New().Verify(context.Background(), message, signature)
 
-	return valid && err == nil
+	return signer != siwx.SignerNone && err == nil
 }
 
 func TestLeavesAddressCasingAlone(t *testing.T) {

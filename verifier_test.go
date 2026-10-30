@@ -216,6 +216,7 @@ func TestErrorsCarryTheMachineCode(t *testing.T) {
 		siwx.ErrInvalidNonce:         "siwx_invalid_nonce",
 		siwx.ErrInvalidSignature:     "siwx_invalid_signature",
 		siwx.ErrUnsupportedNamespace: "siwx_unsupported_namespace",
+		siwx.ErrUnsupportedChain:     "siwx_unsupported_chain",
 	}
 
 	for err, code := range cases {
@@ -298,10 +299,10 @@ type recordingVerifier struct{ seen string }
 
 func (verifier *recordingVerifier) Namespace() string { return "bip122" }
 
-func (verifier *recordingVerifier) Verify(_ context.Context, message *siwx.Message, _ string) (bool, error) {
+func (verifier *recordingVerifier) Verify(_ context.Context, message *siwx.Message, _ string) (siwx.SignerKind, error) {
 	verifier.seen = message.Address
 
-	return true, nil
+	return siwx.SignerAccount, nil
 }
 
 func (verifier *recordingVerifier) NormaliseAddress(address string) string {
@@ -385,5 +386,70 @@ func TestAcceptsAMessageIssuedExactlyNowWithoutSkew(t *testing.T) {
 
 	if _, err := verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_SIG")); err != nil {
 		t.Fatal(err)
+	}
+}
+
+func TestMarksAnAccountLogin(t *testing.T) {
+	session, err := newVerifier(t, siwx.Config{}).Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_SIG"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if session.ContractWallet {
+		t.Fatal("marked as a contract wallet")
+	}
+}
+
+func TestMarksAContractWalletLogin(t *testing.T) {
+	verifier := newVerifier(t, siwx.Config{Verifiers: withContracts(&countingChecker{verdict: true})})
+
+	session, err := verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_FOREIGN_SIG"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if !session.ContractWallet {
+		t.Fatal("not marked as a contract wallet")
+	}
+}
+
+func TestAcceptsAChainOnTheAllowList(t *testing.T) {
+	verifier := newVerifier(t, siwx.Config{Chains: []string{"eip155:137", " eip155:1 "}})
+
+	if _, err := verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_SIG")); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestRejectsAChainOutsideTheAllowListBeforeAnyCheck(t *testing.T) {
+	checker := &countingChecker{verdict: true}
+	store := newSeededStore(signedNonce)
+	verifier := newVerifier(t, siwx.Config{Chains: []string{"eip155:137"}, Nonces: store, Verifiers: withContracts(checker)})
+
+	_, err := verifier.Verify(context.Background(), vector(t, "EVM_MESSAGE"), vector(t, "EVM_FOREIGN_SIG"))
+	if !errors.Is(err, siwx.ErrUnsupportedChain) {
+		t.Fatalf("got %v", err)
+	}
+
+	if live, _ := store.Exists(context.Background(), signedNonce); !live || checker.calls != 0 {
+		t.Fatalf("live %v, calls %d", live, checker.calls)
+	}
+}
+
+func TestComparesTheChainAsItWasSigned(t *testing.T) {
+	verifier := newVerifier(t, siwx.Config{Chains: []string{"solana:mainnet"}})
+
+	_, err := verifier.Verify(context.Background(), vector(t, "SOLANA_MESSAGE"), vector(t, "SOLANA_SIG_BASE64"))
+	if !errors.Is(err, siwx.ErrUnsupportedChain) {
+		t.Fatalf("got %v", err)
+	}
+}
+
+func TestAcceptsEveryChainWithoutAnAllowList(t *testing.T) {
+	raw := strings.Replace(vector(t, "EVM_MESSAGE"), "Chain ID: 1", "Chain ID: 8453", 1)
+
+	_, err := newVerifier(t, siwx.Config{}).Verify(context.Background(), raw, vector(t, "EVM_FOREIGN_SIG"))
+	if errors.Is(err, siwx.ErrUnsupportedChain) {
+		t.Fatalf("got %v", err)
 	}
 }

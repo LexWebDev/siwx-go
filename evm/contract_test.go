@@ -266,3 +266,40 @@ func TestDoesNotRepeatAMalformedResponse(t *testing.T) {
 		t.Fatalf("valid %v, err %v", valid, err)
 	}
 }
+
+type countingTransport struct {
+	calls atomic.Int32
+}
+
+func (transport *countingTransport) RoundTrip(request *http.Request) (*http.Response, error) {
+	transport.calls.Add(1)
+
+	return http.DefaultTransport.RoundTrip(request)
+}
+
+func TestUsesTheHTTPClientItWasGiven(t *testing.T) {
+	server, _, _ := rpcServer(t, magicResult)
+	transport := &countingTransport{}
+	checker := evm.NewRPCChecker(server.URL, nil).WithClient(&http.Client{Transport: transport})
+
+	if !accepted(checker, testvectors.Get(t, "EVM_SIGNER"), strings.Repeat("a", 64), testvectors.Get(t, "EVM_SIG"), "eip155:1") {
+		t.Fatal("rejected")
+	}
+
+	if transport.calls.Load() != 1 {
+		t.Fatalf("calls: %d", transport.calls.Load())
+	}
+}
+
+func TestLeavesTheOriginalCheckerUntouchedWhenGivenAClient(t *testing.T) {
+	server, _, _ := rpcServer(t, magicResult)
+	transport := &countingTransport{}
+	original := evm.NewRPCChecker(server.URL, nil)
+
+	original.WithClient(&http.Client{Transport: transport})
+	accepted(original, testvectors.Get(t, "EVM_SIGNER"), strings.Repeat("a", 64), testvectors.Get(t, "EVM_SIG"), "eip155:1")
+
+	if transport.calls.Load() != 0 {
+		t.Fatalf("calls: %d", transport.calls.Load())
+	}
+}

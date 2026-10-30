@@ -24,19 +24,23 @@ func (verifier *Verifier) Namespace() string {
 	return "solana"
 }
 
-// Verify reports whether signature belongs to the message address.
-func (verifier *Verifier) Verify(_ context.Context, message *siwx.Message, signature string) (bool, error) {
+// Verify says who signed for the message address, if anyone did.
+func (verifier *Verifier) Verify(_ context.Context, message *siwx.Message, signature string) (siwx.SignerKind, error) {
 	publicKey, err := base58.Decode(message.Address)
 	if err != nil || len(publicKey) != ed25519.PublicKeySize {
-		return false, nil
+		return siwx.SignerNone, nil
 	}
 
 	rawSignature := decodeSolanaSignature(signature)
 	if len(rawSignature) != ed25519.SignatureSize {
-		return false, nil
+		return siwx.SignerNone, nil
 	}
 
-	return ed25519.Verify(publicKey, []byte(message.Raw), rawSignature), nil
+	if !ed25519.Verify(publicKey, []byte(message.Raw), rawSignature) {
+		return siwx.SignerNone, nil
+	}
+
+	return siwx.SignerAccount, nil
 }
 
 // NormaliseAddress returns the address unchanged, because base58 is case-sensitive.

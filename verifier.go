@@ -15,11 +15,23 @@ const defaultClockSkew = 5 * time.Minute
 // NoClockSkew as Config.ClockSkew disables the tolerance for wallet clocks.
 const NoClockSkew time.Duration = -1
 
+// SignerKind says what produced a signature.
+type SignerKind int
+
+const (
+	// SignerNone means the signature is not valid.
+	SignerNone SignerKind = iota
+	// SignerAccount means the private key of the address signed.
+	SignerAccount
+	// SignerContract means a smart contract wallet accepted the signature.
+	SignerContract
+)
+
 // SignatureVerifier verifies signatures of one CAIP-2 namespace. A returned error means
 // the check could not be completed.
 type SignatureVerifier interface {
 	Namespace() string
-	Verify(ctx context.Context, message *Message, signature string) (bool, error)
+	Verify(ctx context.Context, message *Message, signature string) (SignerKind, error)
 	NormaliseAddress(address string) string
 }
 
@@ -36,6 +48,9 @@ type NonceStore interface {
 type Config struct {
 	// Domains lists allowed domains exactly as wallets send them, with a port if any.
 	Domains []string
+	// Chains limits the accepted CAIP-2 chains, compared as signed. Empty allows every chain
+	// of the enabled verifiers.
+	Chains []string
 	// ClockSkew tolerates wallet clocks running ahead. Zero means five minutes.
 	ClockSkew time.Duration
 	Nonces    NonceStore
@@ -52,12 +67,16 @@ type Session struct {
 	ChainID   string
 	Domain    string
 	IssuedAt  time.Time
-	Message   *Message
+	// ContractWallet is true when a smart contract, not a key, accepted the signature.
+	// Such an address can have different owners on different chains.
+	ContractWallet bool
+	Message        *Message
 }
 
 // Verifier checks signed messages. It is safe for concurrent use.
 type Verifier struct {
 	domains   []string
+	chains    []string
 	verifiers map[string]SignatureVerifier
 	nonces    NonceStore
 	clockSkew time.Duration
@@ -74,7 +93,8 @@ func New(config Config) (*Verifier, error) {
 	}
 
 	verifier := &Verifier{
-		domains:   normaliseDomains(config.Domains),
+		domains:   normaliseList(config.Domains),
+		chains:    normaliseList(config.Chains),
 		verifiers: map[string]SignatureVerifier{},
 		nonces:    config.Nonces,
 		clockSkew: resolveClockSkew(config.ClockSkew),
@@ -105,6 +125,10 @@ func (verifier *Verifier) Verify(ctx context.Context, raw, signature string) (*S
 		return nil, err
 	}
 
+	if len(verifier.chains) > 0 && !slices.Contains(verifier.chains, message.ChainID) {
+		return nil, ErrUnsupportedChain
+	}
+
 	if err := verifier.assertDomain(message); err != nil {
 		return nil, err
 	}
@@ -125,11 +149,11 @@ func (verifier *Verifier) Verify(ctx context.Context, raw, signature string) (*S
 		return nil, ErrInvalidNonce
 	}
 
-	valid, err := chainVerifier.Verify(ctx, message, signature)
+	signer, err := chainVerifier.Verify(ctx, message, signature)
 	if err != nil {
 		return nil, fmt.Errorf("%w: %w", ErrInvalidSignature, err)
 	}
-	if !valid {
+	if signer == SignerNone {
 		return nil, ErrInvalidSignature
 	}
 
@@ -144,6 +168,8 @@ func (verifier *Verifier) Verify(ctx context.Context, raw, signature string) (*S
 		Domain:    message.Domain,
 		IssuedAt:  message.IssuedAt,
 		Message:   message,
+
+		ContractWallet: signer == SignerContract,
 	}, nil
 }
 
@@ -195,11 +221,11 @@ func resolveClockSkew(configured time.Duration) time.Duration {
 	return max(configured, 0)
 }
 
-func normaliseDomains(domains []string) []string {
-	normalised := make([]string, 0, len(domains))
+func normaliseList(entries []string) []string {
+	normalised := make([]string, 0, len(entries))
 
-	for _, domain := range domains {
-		if trimmed := strings.TrimSpace(domain); trimmed != "" {
+	for _, entry := range entries {
+		if trimmed := strings.TrimSpace(entry); trimmed != "" {
 			normalised = append(normalised, trimmed)
 		}
 	}

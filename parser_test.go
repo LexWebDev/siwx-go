@@ -142,6 +142,9 @@ func TestRejectsMessagesThatBreakTheGrammar(t *testing.T) {
 	cases := map[string]string{
 		"malformed header":           "garbage\n" + vector(t, "EVM_SIGNER"),
 		"empty address":              strings.Replace(evm, vector(t, "EVM_SIGNER"), "", 1),
+		"empty uri":                  strings.Replace(evm, "URI: https://dapp.expert", "URI: ", 1),
+		"empty version":              strings.Replace(evm, "Version: 1", "Version: ", 1),
+		"stray carriage return":      strings.Replace(evm, "URI: https://dapp.expert", "URI: https://dapp.expert\r\r", 1),
 		"missing nonce":              strings.Replace(evm, "Nonce: 8Kc2fQ1pXm9Zr4Lt\n", "", 1),
 		"short nonce":                strings.Replace(evm, "8Kc2fQ1pXm9Zr4Lt", "abc", 1),
 		"duplicate uri":              evm + "\nURI: https://dapp.expert",

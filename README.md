@@ -76,6 +76,7 @@ the domain binding is what stops a signature obtained on another site from worki
 | `Domains` | allow list of domains |
 | `Nonces` | **required**, a `NonceStore` |
 | `Verifiers` | **required**, the enabled chains |
+| `Chains` | allow list of CAIP-2 chains, compared as signed; empty accepts every chain of the enabled verifiers |
 | `ClockSkew` | tolerance for wallet clocks running ahead, five minutes by default; `siwx.NoClockSkew` turns it off |
 | `Now` | replaces `time.Now`, useful in tests |
 
@@ -147,6 +148,7 @@ session.ChainID   // always CAIP-2, e.g. "eip155:137"
 session.Domain
 session.IssuedAt  // time.Time
 session.Message   // the parsed *siwx.Message
+session.ContractWallet // true when a smart contract accepted the signature
 ```
 
 `Message` carries every parsed field. The ones worth knowing about when you validate intent:
@@ -195,6 +197,7 @@ comes through unchanged.
 | `siwx_invalid_nonce` | `ErrInvalidNonce` | nonce was never issued, already used, or expired |
 | `siwx_invalid_signature` | `ErrInvalidSignature` | signature does not belong to the claimed address |
 | `siwx_unsupported_namespace` | `ErrUnsupportedNamespace` | no verifier is enabled for the namespace |
+| `siwx_unsupported_chain` | `ErrUnsupportedChain` | the chain is not in `Config.Chains` |
 
 The nonce is consumed **after** the signature check passes, so an invalid signature cannot be
 used to burn somebody else's nonce.
@@ -242,7 +245,8 @@ const signedChainId = chainId === 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp' ? 's
 ```
 
 This module accepts both forms and reports the value as it was signed, so `session.ChainID` can
-hold either one. Compare against both if you branch on it.
+hold either one. Compare against both if you branch on it, and list both in `Config.Chains` if you
+want to accept both.
 
 ### One-Click Auth only fires in a single-namespace app
 
@@ -285,16 +289,17 @@ serves every chain instead, so the signature is checked on that endpoint's netwo
 `Chain ID` the message names. Use that only if you accept a single chain.
 
 **A contract address belongs to one chain, not to one owner.** The same address can be controlled
-by different parties on two networks. If you map more than one chain, key contract-wallet accounts
-by `(session.ChainID, session.Address)` rather than by address alone, or map only the single chain
-you trust. With a single URL the session reports the chain the message claims, not the one that
+by different parties on two networks. `session.ContractWallet` tells you when this applies: if you
+map more than one chain, key those accounts by `(session.ChainID, session.Address)` rather than by
+address alone, or map only the single chain you trust. With a single URL the session reports the chain the message claims, not the one that
 was checked, so treat `session.ChainID` as unverified in that mode.
 
 EOA logins never pay for this: the RPC call only happens after recovery fails, and only for a
 nonce that is still live, so a request with a made-up nonce costs you no RPC quota. A contract that
 reverts is a plain rejection. This is the only place the module touches the network, and its errors
 are fixed strings: neither the endpoint, which often carries an API key, nor text from the node
-ever reaches them. Swap the implementation by passing your own `evm.ContractChecker`.
+ever reaches them. Use `WithClient` to send the calls through your own `*http.Client`, or swap the
+implementation by passing your own `evm.ContractChecker`.
 
 ## Compatibility
 

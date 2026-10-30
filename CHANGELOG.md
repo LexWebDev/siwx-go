@@ -6,6 +6,20 @@ All notable changes to this module are documented here. The format follows
 
 ## [Unreleased]
 
+### Changed
+
+- **Breaking:** `SignatureVerifier.Verify` returns a `SignerKind` instead of a `bool`.
+- **Breaking:** `Parse` rejects empty required fields and a carriage return inside the message.
+  `Verify` already refused such messages, so only direct callers of `Parse` are affected.
+
+### Added
+
+- `Session.ContractWallet` reports that a smart contract, not a key, accepted the signature.
+- `Config.Chains` and `ErrUnsupportedChain` limit the accepted chains before any other check.
+- `evm.RPCChecker.WithClient` sends the calls through your own `*http.Client`.
+- Fuzz targets for the parser and both verifiers, runnable examples, and a parser corpus shared
+  with the PHP package.
+
 ## [0.1.0] - 2026-10-30
 
 First release, the Go counterpart of `lexwebdev/laravel-siwx` 0.4.0.

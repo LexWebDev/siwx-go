@@ -32,6 +32,10 @@ var (
 // but leaves the address format to the namespace verifier.
 func Parse(raw string) (*Message, error) {
 	normalised := strings.Trim(strings.ReplaceAll(raw, "\r\n", "\n"), trimmedRunes)
+	if strings.Contains(normalised, "\r") {
+		return nil, ErrInvalidMessage
+	}
+
 	lines := strings.Split(normalised, "\n")
 
 	header := headerPattern.FindStringSubmatch(lines[0])
@@ -152,7 +156,7 @@ func stripRecapSentence(statement string, resources []string) string {
 
 func applyRequiredFields(message *Message, fields map[string]string) error {
 	for _, key := range []string{"URI", "Version", "Chain ID", "Nonce", "Issued At"} {
-		if _, present := fields[key]; !present {
+		if fields[key] == "" {
 			return ErrInvalidMessage
 		}
 	}
